@@ -13,12 +13,14 @@ resp = requests.get(url)
 data = json.loads(resp.text)
 # print(data)
 
+# Access Route
 
 @application.route('/<variable>', methods=['GET'])
 def return_metadata(variable):
 	# return {"new": f"file {variable}"}
 	metadata = data[variable]
 	return metadata
+# Default Route
 
 @application.route('/')
 def index():
