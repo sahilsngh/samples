@@ -1,6 +1,6 @@
-from flask import Flask, send_from_directory
-import json, os
+import json
 import requests
+from flask import Flask, send_from_directory
 
 application = Flask(__name__)
 
