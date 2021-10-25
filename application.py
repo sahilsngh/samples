@@ -13,7 +13,8 @@ def return_on_each_call(variable):
 
 @application.route('/favicon.ico') 
 def favicon(): 
-    return send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico')
+    return send_from_directory(application.static_folder, 'favicon.ico')
+    # return send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico')
 
 
 
