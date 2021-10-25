@@ -23,7 +23,7 @@ application = Flask(__name__)
 
 @application.route('/<variable>', methods=['GET'])
 def return_on_each_call(variable):
-	github_url = f'https://raw.githubusercontent.com/sahilsngh/samples/main/schema/{variable}.json'
+	github_url = f'https://raw.githubusercontent.com/sahilsngh/samples/main/metadata/{variable}.json'
 	response = requests.get(github_url)
 	metadata = json.loads(response.text)
 	return metadata
