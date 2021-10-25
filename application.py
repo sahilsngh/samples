@@ -1,25 +1,8 @@
-from flask import Flask
-import json
+from flask import Flask, send_from_directory
+import json, os
 import requests
 
 application = Flask(__name__)
-
-
-# with open('./final.json') as f:
-#   data = json.load(f)
-
-# url = 'https://raw.githubusercontent.com/sahilsngh/samples/main/final.json'
-# resp = requests.get(url)
-# data = json.loads(resp.text)
-# print(data)
-
-# Access Route
-
-# @application.route('/<variable>', methods=['GET'])
-# def return_metadata(variable):
-# 	# return {"new": f"file {variable}"}
-# 	metadata = data[variable]
-# 	return metadata
 
 @application.route('/<variable>', methods=['GET'])
 def return_on_each_call(variable):
@@ -27,6 +10,11 @@ def return_on_each_call(variable):
 	response = requests.get(github_url)
 	metadata = json.loads(response.text)
 	return metadata
+
+@application.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico')
+
 
 
 # Default Route
